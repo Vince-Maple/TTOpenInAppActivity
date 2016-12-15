@@ -161,6 +161,11 @@
 
 - (void)openDocumentInteractionControllerWithFileURL:(NSURL *)fileURL
 {
+    if (!fileURL) {
+        [self activityDidFinish:NO];
+        return;
+    }
+
     // Open "Open in"-menu
     self.docController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
     self.docController.delegate = self;
